@@ -33,9 +33,22 @@ int main(int argc, char **argv)
     app.installTranslator(&translatorWebEngine);
 
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);
+    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::ScrollAnimatorEnabled,true);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
+    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::FullScreenSupportEnabled,true);
+    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::ScreenCaptureEnabled,true);
+    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::AllowRunningInsecureContent,true);
+#endif
 #if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::DnsPrefetchEnabled, true);
     QWebEngineProfile::defaultProfile()->setUseForGlobalCertificateVerification();
+#endif
+#if QT_VERSION >= QT_VERSION_CHECK(5 ,6 ,0)
+    QString userAgent = QWebEngineProfile::defaultProfile()->httpUserAgent();
+    QString qtUA = "QtWebEngine/";
+    qtUA.append(qVersion());
+    userAgent.replace(userAgent.indexOf(qtUA),qtUA.length(),"Pd2Browser/0.1.1");
+    QWebEngineProfile::defaultProfile()->setHttpUserAgent(userAgent);
 #endif
 
     QUrl url = commandLineUrlArgument();
