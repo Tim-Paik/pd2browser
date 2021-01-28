@@ -2,8 +2,8 @@
     <qresource prefix="/">
         <file>Logo.png</file>
         <file>ninja.png</file>
-        <file>i18n_en.qm</file>
         <file>i18n_zh.qm</file>
+        <file>qtwebengine_zh.qm</file>
     </qresource>
     <qresource prefix="/">
         <file alias="dialog-error.png">3rdparty/dialog-error.png</file>

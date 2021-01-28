@@ -28,6 +28,9 @@ int main(int argc, char **argv)
     QTranslator translator;
     translator.load(QString(":i18n_") + QLocale::system().name());
     app.installTranslator(&translator);
+    QTranslator translatorWebEngine;
+    translatorWebEngine.load(QString(":qtwebengine_") + QLocale::system().name());
+    app.installTranslator(&translatorWebEngine);
 
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)

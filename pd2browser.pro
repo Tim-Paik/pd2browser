@@ -29,8 +29,6 @@ FORMS += \
     downloadmanagerwidget.ui \
     downloadwidget.ui
 
-TRANSLATIONS += \
-    data/i18n_en.ts \
-    data/i18n_zh.ts
+TRANSLATIONS += data/i18n_zh.ts
 
 RESOURCES += data/pd2browser.qrc
