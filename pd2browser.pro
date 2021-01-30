@@ -31,4 +31,4 @@ FORMS += \
 
 TRANSLATIONS += data/i18n_zh.ts
 
-RESOURCES += data/pd2browser.qrc data/style.qrc
+RESOURCES += data/pd2browser.qrc

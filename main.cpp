@@ -33,13 +33,6 @@ int main(int argc, char **argv)
     translatorWebEngine.load(QString(":qtwebengine_") + QLocale::system().name());
     app.installTranslator(&translatorWebEngine);
 
-    QFile f(QString(":data/style.qss"));
-    if (f.exists()) {
-        f.open(QFile::ReadOnly | QFile::Text);
-        QTextStream ts(&f);
-        qApp->setStyleSheet(ts.readAll());
-    }
-
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::ScrollAnimatorEnabled,true);
     //QWebEngineSettings::
