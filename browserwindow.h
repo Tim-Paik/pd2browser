@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QTime>
 #include <QWebEnginePage>
+#include <QAction>
 
 QT_BEGIN_NAMESPACE
 class QLineEdit;
@@ -23,7 +24,7 @@ public:
     QSize sizeHint() const override;
     TabWidget *tabWidget() const;
     WebView *currentTab() const;
-    Browser *browser() { return m_browser; }
+    Browser *browser() { return m_browser; };
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -47,7 +48,7 @@ private:
     QMenu *createEditMenu();
     QMenu *createViewMenu(QToolBar *toolBar);
     QMenu *createWindowMenu(TabWidget *tabWidget);
-    QMenu *createHelpMenu();
+    //QMenu *createHelpMenu();
     QToolBar *createToolBar();
 
 private:

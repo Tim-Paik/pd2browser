@@ -176,6 +176,7 @@ WebView *TabWidget::createBackgroundTab()
     // Workaround for QTBUG-61770
     webView->resize(currentWidget()->size());
     webView->show();
+    webView->setUrl(QUrl(QStringLiteral("https://cn.bing.com")));
     return webView;
 }
 

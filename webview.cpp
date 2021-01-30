@@ -91,10 +91,10 @@ QIcon WebView::favIcon() const
         static QIcon errorIcon(QStringLiteral(":dialog-error.png"));
         return errorIcon;
     } else if (m_loadProgress < 100) {
-        static QIcon loadingIcon(QStringLiteral(":view-refresh.png"));
+        static QIcon loadingIcon(QStringLiteral(":refresh.png"));
         return loadingIcon;
     } else {
-        static QIcon defaultIcon(QStringLiteral(":text-html.png"));
+        static QIcon defaultIcon(QStringLiteral(":default-icon.png"));
         return defaultIcon;
     }
 }

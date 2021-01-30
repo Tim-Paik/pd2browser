@@ -5,6 +5,7 @@
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
 #include <QTranslator>
+#include <QFile>
 
 QUrl commandLineUrlArgument()
 {
@@ -13,7 +14,7 @@ QUrl commandLineUrlArgument()
         if (!arg.startsWith(QLatin1Char('-')))
             return QUrl::fromUserInput(arg);
     }
-    return QUrl(QStringLiteral("https://timpaik.top/"));
+    return QUrl(QStringLiteral("https://cn.bing.com/"));
 }
 
 int main(int argc, char **argv)
@@ -32,8 +33,16 @@ int main(int argc, char **argv)
     translatorWebEngine.load(QString(":qtwebengine_") + QLocale::system().name());
     app.installTranslator(&translatorWebEngine);
 
+    QFile f(QString(":data/style.qss"));
+    if (f.exists()) {
+        f.open(QFile::ReadOnly | QFile::Text);
+        QTextStream ts(&f);
+        qApp->setStyleSheet(ts.readAll());
+    }
+
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::ScrollAnimatorEnabled,true);
+    //QWebEngineSettings::
 #if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::FullScreenSupportEnabled,true);
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::ScreenCaptureEnabled,true);

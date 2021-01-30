@@ -12,7 +12,7 @@
         <file alias="go-next.png">icons/next.png</file>
         <file alias="go-previous.png">icons/previous.png</file>
         <file alias="process-stop.png">icons/stop.png</file>
-        <file alias="text-html.png">icons/html.png</file>
-        <file alias="view-refresh.png">icons/refresh.png</file>
+        <file alias="default-icon.png">icons/html.png</file>
+        <file alias="refresh.png">icons/refresh.png</file>
     </qresource>
 </RCC>

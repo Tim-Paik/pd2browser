@@ -20,6 +20,7 @@
 #include <QWebEngineFindTextResult>
 #endif
 #include <QWebEngineProfile>
+#include <QDebug>
 
 BrowserWindow::BrowserWindow(Browser *browser, QWebEngineProfile *profile, bool forDevTools)
     : m_browser(browser)
@@ -36,6 +37,9 @@ BrowserWindow::BrowserWindow(Browser *browser, QWebEngineProfile *profile, bool 
 {
     setAttribute(Qt::WA_DeleteOnClose, true);
     setFocusPolicy(Qt::ClickFocus);
+    this->resize(QSize(1400,900));
+    setTabShape(QTabWidget::Rounded);
+    //m_tabWidget->setStyleSheet(QStringLiteral("Q"));
 
     if (!forDevTools) {
         m_progressBar = new QProgressBar(this);
@@ -47,6 +51,7 @@ BrowserWindow::BrowserWindow(Browser *browser, QWebEngineProfile *profile, bool 
         menuBar()->addMenu(createViewMenu(toolbar));
         menuBar()->addMenu(createWindowMenu(m_tabWidget));
         //menuBar()->addMenu(createHelpMenu());
+        menuBar()->setVisible(false);
     }
 
     QWidget *centralWidget = new QWidget(this);
@@ -118,6 +123,7 @@ QMenu *BrowserWindow::createFileMenu(TabWidget *tabWidget)
         m_urlLineEdit->setFocus();
     });
     fileMenu->addAction(newTabAction);
+    this->addAction(newTabAction); //Enable shortcut keys globally
 
     fileMenu->addAction(tr("&Open File..."), this, &BrowserWindow::handleFileOpenTriggered, QKeySequence::Open);
     fileMenu->addSeparator();
@@ -128,11 +134,13 @@ QMenu *BrowserWindow::createFileMenu(TabWidget *tabWidget)
         tabWidget->closeTab(tabWidget->currentIndex());
     });
     fileMenu->addAction(closeTabAction);
+    this->addAction(closeTabAction);
 
     QAction *closeAction = new QAction(tr("&Quit"),this);
     closeAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Q));
     connect(closeAction, &QAction::triggered, this, &QWidget::close);
     fileMenu->addAction(closeAction);
+    this->addAction(closeAction);
 
     connect(fileMenu, &QMenu::aboutToShow, [this, closeAction]() {
         if (m_browser->windows().count() == 1)
@@ -147,10 +155,12 @@ QMenu *BrowserWindow::createEditMenu()
 {
     QMenu *editMenu = new QMenu(tr("&Edit"));
     QAction *findAction = editMenu->addAction(tr("&Find"));
+    this->addAction(findAction);
     findAction->setShortcuts(QKeySequence::Find);
     connect(findAction, &QAction::triggered, this, &BrowserWindow::handleFindActionTriggered);
 
     QAction *findNextAction = editMenu->addAction(tr("Find &Next"));
+    this->addAction(findNextAction);
     findNextAction->setShortcut(QKeySequence::FindNext);
     connect(findNextAction, &QAction::triggered, [this]() {
         if (!currentTab() || m_lastSearch.isEmpty())
@@ -159,6 +169,7 @@ QMenu *BrowserWindow::createEditMenu()
     });
 
     QAction *findPreviousAction = editMenu->addAction(tr("Find &Previous"));
+    this->addAction(findPreviousAction);
     findPreviousAction->setShortcut(QKeySequence::FindPrevious);
     connect(findPreviousAction, &QAction::triggered, [this]() {
         if (!currentTab() || m_lastSearch.isEmpty())
@@ -173,6 +184,7 @@ QMenu *BrowserWindow::createViewMenu(QToolBar *toolbar)
 {
     QMenu *viewMenu = new QMenu(tr("&View"));
     m_stopAction = viewMenu->addAction(tr("&Stop"));
+    this->addAction(m_stopAction);
     QList<QKeySequence> shortcuts;
     shortcuts.append(QKeySequence(Qt::CTRL | Qt::Key_Period));
     shortcuts.append(Qt::Key_Escape);
@@ -182,12 +194,14 @@ QMenu *BrowserWindow::createViewMenu(QToolBar *toolbar)
     });
 
     m_reloadAction = viewMenu->addAction(tr("Reload Page"));
+    this->addAction(m_reloadAction);
     m_reloadAction->setShortcuts(QKeySequence::Refresh);
     connect(m_reloadAction, &QAction::triggered, [this]() {
         m_tabWidget->triggerWebPageAction(QWebEnginePage::Reload);
     });
 
     QAction *zoomIn = viewMenu->addAction(tr("Zoom &In"));
+    this->addAction(zoomIn);
     zoomIn->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Plus));
     connect(zoomIn, &QAction::triggered, [this]() {
         if (currentTab())
@@ -195,6 +209,7 @@ QMenu *BrowserWindow::createViewMenu(QToolBar *toolbar)
     });
 
     QAction *zoomOut = viewMenu->addAction(tr("Zoom &Out"));
+    this->addAction(zoomOut);
     zoomOut->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Minus));
     connect(zoomOut, &QAction::triggered, [this]() {
         if (currentTab())
@@ -202,6 +217,7 @@ QMenu *BrowserWindow::createViewMenu(QToolBar *toolbar)
     });
 
     QAction *resetZoom = viewMenu->addAction(tr("Reset &Zoom"));
+    this->addAction(resetZoom);
     resetZoom->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_0));
     connect(resetZoom, &QAction::triggered, [this]() {
         if (currentTab())
@@ -222,6 +238,7 @@ QMenu *BrowserWindow::createViewMenu(QToolBar *toolbar)
         }
     });
     viewMenu->addAction(viewToolbarAction);
+    this->addAction(viewToolbarAction);
 
     QAction *viewStatusbarAction = new QAction(tr("Hide Status Bar"), this);
     viewStatusbarAction->setShortcut(tr("Ctrl+/"));
@@ -235,6 +252,23 @@ QMenu *BrowserWindow::createViewMenu(QToolBar *toolbar)
         }
     });
     viewMenu->addAction(viewStatusbarAction);
+    this->addAction(viewStatusbarAction);
+
+    statusBar()->close();
+
+    QAction *viewMenuBarAction = new QAction(tr("&Hide Menu Bar"), this);
+    viewMenuBarAction->setShortcut(QKeySequence(Qt::Key_F9));
+    connect(viewMenuBarAction, &QAction::triggered, this, [this]() {
+        if (menuBar()->isVisible()) {
+            //menuBar()->setVisible(false);
+            menuBar()->setHidden(true);
+        } else {
+            //menuBar()->setVisible(true);
+            menuBar()->setHidden(false);
+        }
+    });
+    viewMenu->addAction(viewMenuBarAction);
+    this->addAction(viewMenuBarAction);
     return viewMenu;
 }
 
@@ -263,13 +297,16 @@ QMenu *BrowserWindow::createWindowMenu(TabWidget *tabWidget)
     connect(menu, &QMenu::aboutToShow, [this, menu, nextTabAction, previousTabAction]() {
         menu->clear();
         menu->addAction(nextTabAction);
+        this->addAction(nextTabAction);
         menu->addAction(previousTabAction);
+        this->addAction(previousTabAction);
         menu->addSeparator();
 
         QVector<BrowserWindow*> windows = m_browser->windows();
         int index(-1);
         for (auto window : windows) {
             QAction *action = menu->addAction(window->windowTitle(), this, &BrowserWindow::handleShowWindowTriggered);
+            this->addAction(action);
             action->setData(++index);
             action->setCheckable(true);
             if (window == this)
@@ -313,6 +350,7 @@ QToolBar *BrowserWindow::createToolBar()
         m_tabWidget->triggerWebPageAction(QWebEnginePage::Back);
     });
     navigationBar->addAction(m_historyBackAction);
+    this->addAction(m_historyBackAction);
 
     m_historyForwardAction = new QAction(this);
     QList<QKeySequence> fwdShortcuts = QKeySequence::keyBindings(QKeySequence::Forward);
@@ -331,12 +369,14 @@ QToolBar *BrowserWindow::createToolBar()
         m_tabWidget->triggerWebPageAction(QWebEnginePage::Forward);
     });
     navigationBar->addAction(m_historyForwardAction);
+    this->addAction(m_historyForwardAction);
 
     m_stopReloadAction = new QAction(this);
     connect(m_stopReloadAction, &QAction::triggered, [this]() {
         m_tabWidget->triggerWebPageAction(QWebEnginePage::WebAction(m_stopReloadAction->data().toInt()));
     });
     navigationBar->addAction(m_stopReloadAction);
+    this->addAction(m_stopReloadAction);
 
     m_urlLineEdit = new QLineEdit(this);
     m_favAction = new QAction(this);
@@ -348,6 +388,7 @@ QToolBar *BrowserWindow::createToolBar()
     downloadsAction->setIcon(QIcon(QStringLiteral(":go-bottom.png")));
     downloadsAction->setToolTip(tr("Show downloads"));
     navigationBar->addAction(downloadsAction);
+    this->addAction(downloadsAction);
     connect(downloadsAction, &QAction::triggered, [this]() {
         m_browser->downloadManagerWidget().show();
     });
@@ -378,13 +419,14 @@ void BrowserWindow::handleWebActionEnabledChanged(QWebEnginePage::WebAction acti
 void BrowserWindow::handleWebViewTitleChanged(const QString &title)
 {
     QString suffix = m_profile->isOffTheRecord()
-        ? tr("Pd2 Browser (Incognito)")
-        : tr("Pd2 Browser");
+            ? tr("Pd2 Browser (Incognito)")
+            : tr("Pd2 Browser");
 
-    if (title.isEmpty())
+    if (title.isEmpty()) {
         setWindowTitle(suffix);
-    else
+    } else {
         setWindowTitle(title + " - " + suffix);
+    }
 }
 
 void BrowserWindow::handleNewWindowTriggered()
@@ -402,7 +444,7 @@ void BrowserWindow::handleNewIncognitoWindowTriggered()
 void BrowserWindow::handleFileOpenTriggered()
 {
     QUrl url = QFileDialog::getOpenFileUrl(this, tr("Open Web Resource"), QString(),
-                                                tr("Web Resources (*.html *.htm *.svg *.png *.gif *.svgz);;All files (*.*)"));
+                                           tr("Web Resources (*.html *.htm *.svg *.png *.gif *.svgz);;All files (*.*)"));
     if (url.isEmpty())
         return;
     currentTab()->setUrl(url);
@@ -458,7 +500,7 @@ WebView *BrowserWindow::currentTab() const
 void BrowserWindow::handleWebViewLoadProgress(int progress)
 {
     static QIcon stopIcon(QStringLiteral(":process-stop.png"));
-    static QIcon reloadIcon(QStringLiteral(":view-refresh.png"));
+    static QIcon reloadIcon(QStringLiteral(":refresh.png"));
 
     if (0 < progress && progress < 100) {
         m_stopReloadAction->setData(QWebEnginePage::Stop);
