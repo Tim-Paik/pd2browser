@@ -1,6 +1,7 @@
 TEMPLATE = app
 TARGET = pd2browser
 QT += webenginewidgets
+VERSION = 0.1.6
 
 HEADERS += \
     browser.h \
@@ -28,6 +29,8 @@ FORMS += \
     passworddialog.ui \
     downloadmanagerwidget.ui \
     downloadwidget.ui
+
+RC_ICONS = data/Logo.ico
 
 TRANSLATIONS += data/i18n_zh.ts
 

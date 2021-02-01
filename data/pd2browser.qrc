@@ -4,8 +4,6 @@
         <file>ninja.png</file>
         <file>i18n_zh.qm</file>
         <file>qtwebengine_zh.qm</file>
-    </qresource>
-    <qresource prefix="/">
         <file alias="dialog-error.png">icons/error.png</file>
         <file alias="edit-clear.png">icons/clear.png</file>
         <file alias="go-bottom.png">icons/download.png</file>

@@ -8,140 +8,145 @@
         <translation type="vanished">&amp;Pd2浏览器</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="110"/>
+        <location filename="../browserwindow.cpp" line="115"/>
         <source>&amp;Pd2 Browser</source>
         <translation>Pd2 浏览器</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="111"/>
+        <location filename="../browserwindow.cpp" line="116"/>
         <source>&amp;New Window</source>
         <translation>新建窗口(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="112"/>
+        <location filename="../browserwindow.cpp" line="117"/>
         <source>New &amp;Incognito Window</source>
         <translation>新建无痕窗口(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="114"/>
+        <location filename="../browserwindow.cpp" line="119"/>
         <source>New &amp;Tab</source>
         <translation>新建标签页(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="122"/>
+        <location filename="../browserwindow.cpp" line="128"/>
         <source>&amp;Open File...</source>
         <translation>打开文件(&amp;O)...</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="125"/>
+        <location filename="../browserwindow.cpp" line="131"/>
         <source>&amp;Close Tab</source>
         <translation>关闭标签页(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="132"/>
         <location filename="../browserwindow.cpp" line="139"/>
+        <location filename="../browserwindow.cpp" line="147"/>
         <source>&amp;Quit</source>
         <translation>退出(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="141"/>
+        <location filename="../browserwindow.cpp" line="149"/>
         <source>&amp;Close Window</source>
         <translation>关闭窗口(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="148"/>
+        <location filename="../browserwindow.cpp" line="156"/>
         <source>&amp;Edit</source>
         <translation>编辑(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="149"/>
+        <location filename="../browserwindow.cpp" line="157"/>
         <source>&amp;Find</source>
         <translation>查找(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="153"/>
+        <location filename="../browserwindow.cpp" line="162"/>
         <source>Find &amp;Next</source>
         <translation>查找下一个(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="161"/>
+        <location filename="../browserwindow.cpp" line="171"/>
         <source>Find &amp;Previous</source>
         <translation>查找上一个(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="174"/>
+        <location filename="../browserwindow.cpp" line="185"/>
         <source>&amp;View</source>
         <translation>视图(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="175"/>
+        <location filename="../browserwindow.cpp" line="186"/>
         <source>&amp;Stop</source>
         <translation>停止(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="184"/>
+        <location filename="../browserwindow.cpp" line="196"/>
         <source>Reload Page</source>
         <translation>重新加载</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="190"/>
+        <location filename="../browserwindow.cpp" line="203"/>
         <source>Zoom &amp;In</source>
         <translation>放大(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="197"/>
+        <location filename="../browserwindow.cpp" line="211"/>
         <source>Zoom &amp;Out</source>
         <translation>缩小(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="204"/>
+        <location filename="../browserwindow.cpp" line="219"/>
         <source>Reset &amp;Zoom</source>
         <translation>重置缩放(&amp;Z)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="213"/>
-        <location filename="../browserwindow.cpp" line="220"/>
+        <location filename="../browserwindow.cpp" line="229"/>
+        <location filename="../browserwindow.cpp" line="236"/>
         <source>Hide Toolbar</source>
         <translation>隐藏工具栏</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="214"/>
+        <location filename="../browserwindow.cpp" line="230"/>
         <source>Ctrl+|</source>
         <translation>Ctrl+|</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="217"/>
+        <location filename="../browserwindow.cpp" line="233"/>
         <source>Show Toolbar</source>
         <translation>显示工具栏</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="226"/>
-        <location filename="../browserwindow.cpp" line="233"/>
+        <location filename="../browserwindow.cpp" line="243"/>
+        <location filename="../browserwindow.cpp" line="250"/>
         <source>Hide Status Bar</source>
         <translation>隐藏状态栏</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="227"/>
+        <location filename="../browserwindow.cpp" line="244"/>
         <source>Ctrl+/</source>
         <translation>Ctrl+/</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="230"/>
+        <location filename="../browserwindow.cpp" line="247"/>
         <source>Show Status Bar</source>
         <translation>显示状态栏</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="243"/>
+        <location filename="../browserwindow.cpp" line="259"/>
+        <source>&amp;Hide Menu Bar</source>
+        <translation>隐藏菜单栏(&amp;H)</translation>
+    </message>
+    <message>
+        <location filename="../browserwindow.cpp" line="277"/>
         <source>&amp;Window</source>
         <translation>窗口(&amp;W)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="245"/>
+        <location filename="../browserwindow.cpp" line="279"/>
         <source>Show Next Tab</source>
         <translation>下一个标签页</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="254"/>
+        <location filename="../browserwindow.cpp" line="288"/>
         <source>Show Previous Tab</source>
         <translation>上一个标签页</translation>
     </message>
@@ -154,86 +159,86 @@
         <translation type="obsolete">关于</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="293"/>
+        <location filename="../browserwindow.cpp" line="330"/>
         <source>Navigation</source>
         <translation>导航</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="311"/>
+        <location filename="../browserwindow.cpp" line="357"/>
         <source>Go back in history</source>
         <translation>后退</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="329"/>
+        <location filename="../browserwindow.cpp" line="376"/>
         <source>Go forward in history</source>
         <translation>前进</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="349"/>
+        <location filename="../browserwindow.cpp" line="398"/>
         <source>Show downloads</source>
         <translation>下载</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="381"/>
+        <location filename="../browserwindow.cpp" line="431"/>
         <source>Pd2 Browser (Incognito)</source>
         <oldsource>Pd2 Browser (无痕)</oldsource>
         <translation>Pd2浏览器(无痕)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="382"/>
+        <location filename="../browserwindow.cpp" line="432"/>
         <source>Pd2 Browser</source>
         <translation>Pd2浏览器</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="404"/>
+        <location filename="../browserwindow.cpp" line="455"/>
         <source>Open Web Resource</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="405"/>
+        <location filename="../browserwindow.cpp" line="456"/>
         <source>Web Resources (*.html *.htm *.svg *.png *.gif *.svgz);;All files (*.*)</source>
         <translation>Web资源 (*.html *.htm *.svg *.png *.gif *.svgz);;All files (*.*)</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="416"/>
+        <location filename="../browserwindow.cpp" line="467"/>
         <source>Find</source>
         <translation>查找</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="417"/>
+        <location filename="../browserwindow.cpp" line="468"/>
         <source>Find:</source>
         <translation>查找：</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="426"/>
-        <location filename="../browserwindow.cpp" line="496"/>
+        <location filename="../browserwindow.cpp" line="477"/>
+        <location filename="../browserwindow.cpp" line="547"/>
         <source>&quot;%1&quot; not found.</source>
         <translation>未找到&quot;%1&quot;。</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="435"/>
+        <location filename="../browserwindow.cpp" line="486"/>
         <source>Confirm close</source>
         <translation>确认关闭</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="436"/>
+        <location filename="../browserwindow.cpp" line="487"/>
         <source>Are you sure you want to close the window ?
 There are %1 tabs open.</source>
         <translation>您确定要关闭窗口吗？
 已打开%1个标签。</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="466"/>
+        <location filename="../browserwindow.cpp" line="517"/>
         <source>Stop loading the current page</source>
         <translation>停止加载当前页面</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="471"/>
+        <location filename="../browserwindow.cpp" line="522"/>
         <source>Reload the current page</source>
         <translation>重新加载当前页面</translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="498"/>
+        <location filename="../browserwindow.cpp" line="549"/>
         <source>&quot;%1&quot; found: %2/%3</source>
         <translation>找到“%1”：%2/%3</translation>
     </message>

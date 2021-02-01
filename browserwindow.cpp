@@ -20,7 +20,7 @@
 #include <QWebEngineFindTextResult>
 #endif
 #include <QWebEngineProfile>
-#include <QDebug>
+#include <QPalette>
 
 BrowserWindow::BrowserWindow(Browser *browser, QWebEngineProfile *profile, bool forDevTools)
     : m_browser(browser)
@@ -37,7 +37,7 @@ BrowserWindow::BrowserWindow(Browser *browser, QWebEngineProfile *profile, bool 
 {
     setAttribute(Qt::WA_DeleteOnClose, true);
     setFocusPolicy(Qt::ClickFocus);
-    this->resize(QSize(1400,900));
+    this->resize(QSize(1600,900));
     setTabShape(QTabWidget::Rounded);
     //m_tabWidget->setStyleSheet(QStringLiteral("Q"));
 
@@ -330,6 +330,15 @@ QToolBar *BrowserWindow::createToolBar()
     QToolBar *navigationBar = new QToolBar(tr("Navigation"));
     navigationBar->setMovable(false);
     navigationBar->toggleViewAction()->setEnabled(false);
+    navigationBar->setAutoFillBackground(true);
+    QPalette pal = m_tabWidget->palette();
+    QBrush brush=pal.base();
+    QColor color=brush.color();
+    if (color.name()=="#222b2e")
+        color.setRgb(20,26,27);
+    else if (color.name()=="#ffffff")
+        color.setRgb(242,242,242);
+    navigationBar->setStyleSheet(QString("background-color:%1").arg(color.name()));
 
     m_historyBackAction = new QAction(this);
     QList<QKeySequence> backShortcuts = QKeySequence::keyBindings(QKeySequence::Back);

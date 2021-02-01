@@ -6,6 +6,7 @@
 #include <QWebEngineSettings>
 #include <QTranslator>
 #include <QFile>
+#include <QStyleFactory>
 
 QUrl commandLineUrlArgument()
 {
@@ -27,10 +28,13 @@ int main(int argc, char **argv)
     app.setWindowIcon(QIcon(QStringLiteral(":Logo.png")));
 
     QTranslator translator;
-    translator.load(QString(":i18n_") + QLocale::system().name());
+    translator.load(QString(":/i18n_") + QLocale::system().name());
     app.installTranslator(&translator);
+    QTranslator translatorQt;
+    translatorQt.load(QString("translations/qt_") + QLocale::system().name());
+    app.installTranslator(&translatorQt);
     QTranslator translatorWebEngine;
-    translatorWebEngine.load(QString(":qtwebengine_") + QLocale::system().name());
+    translatorWebEngine.load(QString(":/qtwebengine_") + QLocale::system().name());
     app.installTranslator(&translatorWebEngine);
 
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);
