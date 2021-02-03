@@ -7,6 +7,7 @@
 #include <QTranslator>
 #include <QFile>
 #include <QStyleFactory>
+#include <QSettings>
 
 QUrl commandLineUrlArgument()
 {
@@ -37,16 +38,17 @@ int main(int argc, char **argv)
     translatorWebEngine.load(QString(":/qtwebengine_") + QLocale::system().name());
     app.installTranslator(&translatorWebEngine);
 
+    qDebug() << QStyleFactory::keys();
 #ifdef Q_OS_WIN
     QSettings settings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",QSettings::NativeFormat);
+    qApp->setStyle(QStyleFactory::create("Fusion"));
     if(settings.value("AppsUseLightTheme")==0){
-        qApp->setStyle(QStyleFactory::create("Fusion"));
         QPalette darkPalette;
-        QColor darkColor = QColor(45,45,45);
+        QColor darkColor = QColor(43,43,43);
         QColor disabledColor = QColor(127,127,127);
         darkPalette.setColor(QPalette::Window, darkColor);
         darkPalette.setColor(QPalette::WindowText, Qt::white);
-        darkPalette.setColor(QPalette::Base, QColor(18,18,18));
+        darkPalette.setColor(QPalette::Base, QColor(32,32,32));
         darkPalette.setColor(QPalette::AlternateBase, darkColor);
         darkPalette.setColor(QPalette::ToolTipBase, Qt::white);
         darkPalette.setColor(QPalette::ToolTipText, Qt::white);
