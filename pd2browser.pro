@@ -1,7 +1,9 @@
 TEMPLATE = app
 TARGET = pd2browser
 QT += webenginewidgets
-VERSION = 0.1.6
+VERSION = 0.1.7
+
+DEFINES += __APP_VERSION__=\\\"'$$VERSION'\\\"
 
 HEADERS += \
     browser.h \
