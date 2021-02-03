@@ -38,7 +38,6 @@ int main(int argc, char **argv)
     translatorWebEngine.load(QString(":/qtwebengine_") + QLocale::system().name());
     app.installTranslator(&translatorWebEngine);
 
-    qDebug() << QStyleFactory::keys();
 #ifdef Q_OS_WIN
     QSettings settings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",QSettings::NativeFormat);
     qApp->setStyle(QStyleFactory::create("Fusion"));
